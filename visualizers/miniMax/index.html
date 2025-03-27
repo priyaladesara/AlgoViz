@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Tic Tac Toe AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <section class="algorithm-section">
+            <h2>Minimax Algorithm Visualization</h2>
+            <div class="algorithm-container">
+                <div class="algorithm-tree">
+                    <div class="node root">
+                        <div class="board-mini">
+                            <div>X</div><div>O</div><div></div>
+                            <div></div><div>X</div><div></div>
+                            <div></div><div></div><div>O</div>
+                        </div>
+                        <span class="score">Score: 10</span>
+                    </div>
+                    <div class="tree-level">
+                        <div class="node">
+                            <div class="board-mini">
+                                <div>X</div><div>O</div><div>X</div>
+                                <div></div><div>X</div><div></div>
+                                <div></div><div></div><div>O</div>
+                            </div>
+                            <span class="score">Score: 5</span>
+                        </div>
+                        <div class="node">
+                            <div class="board-mini">
+                                <div>X</div><div>O</div><div></div>
+                                <div>X</div><div>X</div><div></div>
+                                <div></div><div></div><div>O</div>
+                            </div>
+                            <span class="score">Score: 10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="algorithm-explanation">
+                    <h3>How it Works</h3>
+                    <p>The Minimax algorithm works by:</p>
+                    <ol>
+                        <li>Simulating all possible moves</li>
+                        <li>Evaluating each game state</li>
+                        <li>Choosing the move that maximizes AI's chances</li>
+                        <li>Assuming opponent plays optimally</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section">
+            <h1>Tic Tac Toe</h1>
+            
+            <div class="mode-selection" id="modeSelection">
+                <h3>Select Game Mode</h3>
+                <div class="mode-buttons">
+                    <button id="pvp-mode" class="mode-btn">
+                        <span class="mode-icon">👥</span>
+                        Player vs Player
+                    </button>
+                    <button id="pvc-mode" class="mode-btn active">
+                        <span class="mode-icon">🤖</span>
+                        Player vs Computer
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-container">
+                <div class="game-options" id="computerGameOptions">
+                    <button id="start-first" class="active">Play First (X)</button>
+                    <button id="start-second">Play Second (O)</button>
+                </div>
+
+                <div class="player-info" id="playerInfo">
+                    <div class="player player-x active">
+                        <span class="player-icon">X</span>
+                        <span class="player-name">Player 1</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="player player-o">
+                        <span class="player-icon">O</span>
+                        <span class="player-name" id="opponent-name">Computer</span>
+                    </div>
+                </div>
+
+                <div class="board" id="board">
+                    <div class="cell" data-index="0"></div>
+                    <div class="cell" data-index="1"></div>
+                    <div class="cell" data-index="2"></div>
+                    <div class="cell" data-index="3"></div>
+                    <div class="cell" data-index="4"></div>
+                    <div class="cell" data-index="5"></div>
+                    <div class="cell" data-index="6"></div>
+                    <div class="cell" data-index="7"></div>
+                    <div class="cell" data-index="8"></div>
+                </div>
+
+                <div class="status" id="status">Your turn (X)</div>
+                <button id="reset" class="reset-btn">Reset Game</button>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

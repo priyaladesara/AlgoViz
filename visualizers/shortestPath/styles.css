@@ -1,0 +1,207 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a0c1f2 20%, #4681ec 100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.description {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.instructions {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.instructions h2 {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.instructions ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: left;
+}
+
+.instructions li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #1b078d;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.5);
+}
+
+.card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.grid-container {
+    display: grid;
+    gap: 1px;
+    background-color: #e5e7eb;
+    padding: 1px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.node {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.node.start {
+    background-color: #10b981;
+    border-color: #059669;
+}
+
+.node.start::after {
+    content: 'S';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.node.finish {
+    background-color: #ef4444;
+    border-color: #dc2626;
+}
+
+.node.finish::after {
+    content: 'E';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.node.wall {
+    background-color: #1f2937;
+    border-color: #111827;
+}
+
+@keyframes visitedAnimation {
+    0% {
+        background-color: #67e8f9;
+        border-color: #22d3ee;
+        transform: scale(0.3);
+    }
+    50% {
+        background-color: #2dd4bf;
+        border-color: #14b8a6;
+    }
+    75% {
+        background-color: #0ea5e9;
+        border-color: #0284c7;
+        transform: scale(1.2);
+    }
+    100% {
+        background-color: #0369a1;
+        border-color: #075985;
+        transform: scale(1.0);
+    }
+}
+
+.node.visited {
+    animation: visitedAnimation 1.5s ease forwards;
+}
+
+.node.shortest-path {
+    background-color: #fbbf24;
+    border-color: #f59e0b;
+    animation: shortestPath 0.5s ease forwards;
+}
+
+@keyframes shortestPath {
+    0% {
+        transform: scale(0.6);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
