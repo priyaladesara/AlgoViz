@@ -33,7 +33,9 @@ Highlighted features of the AlgoViz toolkit:
   
 ## 📸 Application
 ![image](https://github.com/user-attachments/assets/33c06b91-fbea-45cf-a824-ab72da0ae0d2)
+<br>
 ![image](https://github.com/user-attachments/assets/90aefa58-867f-4e0e-99a3-6323c58d6774)
+<br>
 ![image](https://github.com/user-attachments/assets/b3f36e62-75a1-41e8-9910-2a4cff31d03c)
 
 
