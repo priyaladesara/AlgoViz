@@ -15,6 +15,7 @@ class Queen {
         this.position = {};
         this.uuid = [];
         this.Board = 0;
+        this.solutionCount = 0;
     }
 
     // Setting the slider value onSlide
@@ -26,6 +27,7 @@ class Queen {
 
     nQueen = async () => {
         this.Board = 0;
+        this.solutionCount = 0;
         this.position[`${this.Board}`] = {};
         numberbox.disabled = true;
         await this.solveQueen(this.Board, 0);
@@ -105,18 +107,17 @@ class Queen {
 
     solveQueen = async (board, r) => {
         if (r == this.n) {
-            // Increment Board only if a new valid arrangement is found
-            ++this.Board;
+            ++this.solutionCount;
             
             // If we've found more arrangements than expected, stop
-            if (this.Board >= array[this.n]) return;
+            if (this.solutionCount > array[this.n]) return;
 
-            let table = document.getElementById(`table-${this.uuid[this.Board]}`);
+            // Update solution board (first board is for backtracking visualization)
+            let table = document.getElementById(`table-${this.uuid[this.solutionCount]}`);
             for (let k = 0; k < this.n; ++k) {
                 let row = table.firstChild.childNodes[k];
                 row.getElementsByTagName("td")[this.position[board][k]].innerHTML = queen;
             }
-            this.position[this.Board] = {...this.position[board]};
             return true;
         }
 
@@ -167,14 +168,21 @@ class Queen {
         para.innerHTML = `For ${this.n}x${this.n} board, ${array[this.n]} arrangements are possible.`;
         arrangement.appendChild(para);
 
-        // Create boards
-        for (let i = 0; i < array[this.n]; ++i) {
+        // Create boards - one extra for backtracking visualization
+        // The first board (index 0) is used for backtracking, the rest (1 to array[this.n]) for solutions
+        for (let i = 0; i <= array[this.n]; ++i) {
             this.uuid.push(Math.random());
             let div = document.createElement('div');
             let table = document.createElement('table');
             let header = document.createElement('h4');
             
-            header.innerHTML = `Board ${i + 1} `
+            // Special label for the first board
+            if (i === 0) {
+                header.innerHTML = `Backtracking Board`;
+            } else {
+                header.innerHTML = `Solution ${i}`;
+            }
+            
             table.setAttribute("id", `table-${this.uuid[i]}`);
             header.setAttribute("id", `paragraph-${i}`);
             
